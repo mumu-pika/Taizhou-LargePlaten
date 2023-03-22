@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/main.css" />
+    <script src="./js/echarts.js"></script>
+    <script src="./js/highcharts.js"></script>
+  </head>
+  <body>
+    <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
+    <div class="mainWrapper">
+      <!-- 这里将整个页面划分为3大块, 左中右 -->
+      <div class="sectionLeft">
+        <div class="left-wrapperUp">
+          <div class="left-container">
+            <!-- 年度排班 -->
+            <div class="block" id="ndpbChart"></div>
+            <div class="circleChart-container">
+              <div class="sub-container">
+                <!-- 处室承办 -->
+                <div class="circleChart" id="cscbChart"></div>
+                <!-- 市区一体化 -->
+                <div class="circleChart" id="sqythChart"></div>
+              </div>
+              <div class="sub-container">
+                <!-- 班次类型 -->
+                <div class="circleChart" id="bclxChart"></div>
+                <!-- 培训时长 -->
+                <div class="circleChart" id="pxscChart"></div>
+              </div>
+            </div>
+          </div>
+          <div class="right-container">
+            <!-- 学员信息 -->
+            <div class="block small-block" id="xyxxChart"></div>
+            <!-- 学员占比 -->
+            <div class="block big-block" id="xyzbChart"></div>
+            <!-- 教育信息 -->
+            <div class="block small-block" id="jyxxChart"></div>
+            <!-- 开班计划 -->
+            <div class="block big-block" id="kbjhChart"></div>
+          </div>
+        </div>
+        <div class="left-wrapperDown">
+          <div class="left-subContainer1">
+            <!-- 课程库资源分布 -->
+            <div class="block" id="kczyChart"></div>
+          </div>
+          <div class="left-subContainer2">
+            <!-- 评课率/优秀率 -->
+            <div class="block" id="pklChart"></div>
+            <!-- 课时、课程、师资-->
+            <div class="block" id="ksChart"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sectionCenter">
+        <div class="center-wrapperL">
+          <!-- 性别年龄 -->
+          <div class="block" id="sexAgeChart"></div>
+          <!--  在办班次 -->
+          <div class="block" id="zbbcChart"></div>
+          <!-- 学员出勤（在校） -->
+          <div class="block" id="xyccChart"></div>
+          <!-- 今日课表 -->
+          <div class="block" id="jrkbChart"></div>
+        </div>
+        <div class="center-wrapperR">
+          <!-- 科研立项成果拓扑 -->
+          <div class="block" id="kylxChart"></div>
+          <!-- 科研年度工作 -->
+          <div class="block" id="kyndChart"></div>
+          <!-- 科研课题情况研究 -->
+          <div class="block" id="kyktChart"></div>
+        </div>
+      </div>
+      <div class="sectionRight">
+        <div class="right-wrapperL">
+          <!-- 平台活跃 -->
+          <div class="block" id="pthyChart"></div>
+          <!-- 公告通知 -->
+          <div class="block" id="ggtzChart"></div>
+          <!-- 人事关注动态 -->
+          <div class="block" id="rsgzChart"></div>
+          <!-- 门禁出入 -->
+          <div class="block" id="mjcrChart"></div>
+        </div>
+        <div class="right-wrapperR">
+          <!-- 审批流转 -->
+          <div class="block" id="splzChart"></div>
+          <!-- 职工出勤情况(职工) -->
+          <div class="block" id="zgcqzgChart"></div>
+          <!-- 职工出勤情况(外勤) -->
+          <div class="block" id="zgcqwqChart"></div>
+          <!-- 水电情况 -->
+          <div class="block" id="sdqkChart"></div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      //  sectionLeft 左边大区域
+      //	blockLeft1
+      // 基于准备好的dom，初始化echarts实例
+      let ndpbChart = echarts.init(document.getElementById("ndpbChart"));
+      // 指定图表的配置项和数据
+      let option = {
+        backgroundColor: "#0f2d4f",
+        // 左上角标题
+        // title: {
+        //     text: '年度排班情况',
+        //     textStyle: {
+        //         fontWeight: 'normal',
+        //         fontSize: 16,
+        //         color: '#dfe3e7'
+        //     },
+        //     // 位置信息
+        //     left: '6%',
+        //     top: '4%'
+        // },
+        tooltip: {
+          trigger: "axis",
+          axisPointer: {
+            lineStyle: {
+              color: "#dfe3e7",
+            },
+          },
+        },
+        legend: {
+          icon: "rect",
+          itemWidth: 14,
+          itemHeight: 14,
+          itemGap: 13,
+          data: ["主体班", "非主体班"],
+          right: "4%",
+          textStyle: {
+            fontSize: 12,
+            color: "#dfe3e7",
+          },
+        },
+        grid: {
+          left: "3%",
+          right: "4%",
+          bottom: "3%",
+          containLabel: true,
+        },
+        xAxis: [
+          {
+            type: "category",
+            boundaryGap: false, // 坐标轴两边留白策略
+            axisPointer: {
+              show: true,
+            },
+            // 坐标轴刻度
+            axisTick: {
+              show: false,
+            },
+            axisLine: {
+              show: false,
+              lineStyle: {
+                color: "#dfe3e7",
+              },
+            },
+            data: [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9",
+              "10",
+              "11",
+              "12",
+            ],
+          },
+          {
+            axisPointer: {
+              show: false,
+            },
+            // 坐标轴轴线
+            axisLine: {
+              lineStyle: {
+                color: "#dfe3e7",
+              },
+            },
+            // 坐标轴刻度
+            axisTick: {
+              show: false,
+            },
+
+            // position: 'bottom',
+            // offset: 20,
+            // data: ['', '', '', '', '', '', '', '', '', '', {
+            //     value: '周六',
+            //     textStyle: {
+            //         align: 'left'
+            //     }
+            // }, '周日']
+          },
+        ],
+        yAxis: [
+          {
+            type: "value",
+            position: "left",
+            // name: '单位（%）',
+            // 坐标轴刻度
+            axisTick: {
+              show: false,
+            },
+            // 坐标轴轴线
+            axisLine: {
+              show: false,
+              lineStyle: {
+                color: "#dfe3e7",
+              },
+            },
+            // 坐标轴标签
+            axisLabel: {
+              margin: 10,
+              formatter: "{value}",
+              textStyle: {
+                fontSize: 14,
+              },
+            },
+            // 分割线
+            splitLine: {
+              lineStyle: {
+                color: "#1b3a5b",
+                width: 12,
+              },
+            },
+          },
+        ],
+        // 数据线数据
+        series: [
+          {
+            name: "主体班",
+            type: "line",
+            smooth: true,
+            symbol: "circle",
+            symbolSize: 5,
+            showSymbol: false,
+            legendHoverLink: true, // 鼠标悬浮图例高亮
+            lineStyle: {
+              normal: {
+                width: 3,
+              },
+            },
+            areaStyle: {
+              normal: {
+                color: new echarts.graphic.LinearGradient(
+                  0,
+                  0,
+                  0,
+                  1,
+                  [
+                    {
+                      offset: 0,
+                      color: "rgba(137, 189, 27, 0.3)",
+                    },
+                    {
+                      offset: 0,
+                      color: "rgba(137, 189, 27, 0)",
+                    },
+                  ],
+                  false
+                ),
+                shadowColor: "rgba(0, 0, 0, 0.1)",
+                shadowBlur: 0,
+              },
+            },
+            itemStyle: {
+              normal: {
+                color: "#fcab23",
+                borderColor: "rgba(137,189,2,0.27)",
+                borderWidth: 12,
+              },
+            },
+            data: [0, 18, 25, 35, 25, 22, 23, 40, 30, 35, 40, 49],
+            markPoint: {
+              data: [
+                {
+                  name: "坐标1",
+                  xAxis: "7",
+                  yAxis: "23",
+                },
+              ],
+              symbol: "circle", // 标注点形状
+              symbolSize: 10, // 标注图形的大小
+              // 标记点样式
+              itemStyle: {
+                normal: {
+                  label: {
+                    show: false, //开启显示
+                    position: "top", //在上方显示
+                    textStyle: {
+                      //数值样式
+                      color: "black",
+                      fontSize: 16,
+                    },
+                  },
+                },
+              },
+            },
+          },
+          {
+            name: "非主体班",
+            type: "line",
+            smooth: true,
+            symbol: "circle",
+            symbolSize: 5,
+            showSymbol: false, // 显示线上的点
+            lineStyle: {
+              normal: {
+                width: 3,
+              },
+            },
+            areaStyle: {
+              normal: {
+                color: new echarts.graphic.LinearGradient(
+                  0,
+                  0,
+                  0,
+                  1,
+                  [
+                    {
+                      offset: 0,
+                      color: "rgba(0, 136, 212, 0.3)",
+                    },
+                    {
+                      offset: 0,
+                      color: "rgba(0, 136, 212, 0)",
+                    },
+                  ],
+                  false
+                ),
+                shadowColor: "rgba(0, 0, 0, 0.1)",
+                shadowBlur: 10,
+              },
+            },
+            // 线条样式
+            itemStyle: {
+              normal: {
+                color: "#62d4ff",
+                borderColor: "rgba(0,136,212,0.2)",
+                borderWidth: 12,
+              },
+            },
+            data: [0, 12, 8, 20, 28, 18, 17, 25, 41, 36, 20, 28],
+            markPoint: {
+              data: [
+                {
+                  name: "标记点2",
+                  xAxis: "7",
+                  yAxis: "17",
+                },
+              ],
+              symbol: "emptyCircle", // 标注点形状
+              symbolSize: 10, // 标注图形的大小
+              // 标记点样式
+              itemStyle: {
+                normal: {
+                  label: {
+                    show: false, //开启显示
+                    position: "top", //在上方显示
+                    textStyle: {
+                      //数值样式
+                      color: "black",
+                      fontSize: 16,
+                    },
+                  },
+                  borderColor: "#62d4ff",
+                  borderWidth: 2,
+                },
+              },
+            },
+          },
+        ],
+      };
+      // 使用刚指定的配置项和数据显示图表。
+      ndpbChart.setOption(option);
+    </script>
+    <script type="text/javascript">
+      let chart = Highcharts.chart("cscbChart", {
+        chart: {
+          type: "pie",
+          options3d: {
+            enabled: true,
+            alpha: 60, // 沿y轴向内的倾斜角度
+          },
+        },
+        // 总标题
+        title: {
+          text: "简数科技每周水果消耗量",
+        },
+        // 子标题
+        subtitle: {
+          text: "Highcharts 中的3D环形图",
+        },
+        //  饼图配置
+        plotOptions: {
+          series: {
+            // general options for all series
+          },
+          pie: {
+            // shared options for all pie series
+            // cursor: "pointer",
+            innerSize: 200, // innerSize内部成环
+            depth: 60,
+            showInLegend: true, // 设置图例
+            // center: ["30%", "50%"], // 中心位置的左右偏移
+            dataLabels: {
+              useHTML: true, // 是否使用html去渲染图例
+              enabled: false, // 是否显示饼图的线形tip
+            },
+          },
+        },
+        // 数据列是一组数据集合
+        series: [
+          {
+            name: "处事承办",
+            data: [
+              ["教务一处", 199],
+              ["教务二处", 199],
+              ["教务三处", 199],
+              ["培训中心", 199],
+            ],
+          },
+        ],
+      });
+    </script>
+  </body>
+</html>

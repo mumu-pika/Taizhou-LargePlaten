@@ -1,0 +1,234 @@
+/* 整个大屏区域 */
+/* 分辨率 4068 * 1664 */
+.mainWrapper {
+  width: 4608px;
+  height: 1664px;
+  background-color: #01152b;
+  padding: 20px;
+  display: flex;
+  /* flex-direction: row; */
+  justify-content: space-around;
+}
+
+/* 将整个页面划分为三大块 */
+/* 最左边的区域 */
+.sectionLeft {
+  width: 1500px;
+  height: 100%;
+  background-color: red;
+}
+
+/* 对于每个section再分别进行划分 */
+/* 对于sectionLeft来细分 */
+.left-wrapperUp {
+  display: flex;
+  width: 100%;
+  height: 983.7px;
+}
+.left-container {
+  display: flex;
+  flex-direction: column;
+  align-content: space-around;
+  width: 857.04px;
+  height: 100%;
+  background-color: #fff;
+}
+
+/* 每一个单独的小块 */
+.block {
+  background: rgba(83, 156, 255, 0.18);
+  border: 1px solid rgba(3, 80, 131, 1);
+  box-shadow: inset 0px 0px 18px 3px rgba(12, 152, 241, 0.23);
+  border-radius: 10px;
+}
+#ndpbChart {
+  width: 857.04px;
+  height: 462.84px;
+}
+
+/* 左侧3d环形图区域 */
+.circleChart-container {
+  width: 857.04px;
+  height: 515.08px;
+  background: rgba(83, 156, 255, 0.18);
+}
+
+/* 子容器 */
+.sub-container {
+  width: 100%;
+  height: 50%;
+  display: flex;
+}
+
+/* 每个3d环形图, 这里有4个 */
+.circleChart {
+  width: 420.2px;
+  height: 247.54px;
+  background: rgba(83, 156, 255, 0.18);
+  border: 1px solid rgba(3, 80, 131, 1);
+  box-shadow: inset 0px 1px 23px 5px rgba(36, 135, 211, 0.16);
+  border-radius: 10px;
+}
+
+/* sectionLeft的右上部分 */
+.right-container {
+  display: flex;
+  flex-direction: column;
+  width: 604.03px;
+  height: 100%;
+  background-color: #eee;
+}
+
+/* 这里因为4个卡片两大两小，所以这里进行了单独的区分 */
+.small-block {
+  width: 604.03px;
+  height: 140.46px;
+}
+
+.big-block {
+  width: 604.03px;
+  height: 321.39px;
+}
+
+/* sectionLeft的底部部分 */
+.left-wrapperDown {
+  display: flex;
+  width: 100%;
+  height: 615.74px;
+}
+/* 两个子容器 */
+.left-subContainer1 {
+  width: 607.42px;
+  height: 100%;
+}
+
+.left-subContainer2 {
+  display: flex;
+  flex-direction: column;
+  width: 857.04px;
+  height: 100%;
+}
+/* 底部的左边图 */
+#kczyChart {
+  width: 100%;
+  height: 100%;
+}
+/* 底部的右边上下两张图 */
+#pklChart {
+  width: 100%;
+  height: 408px;
+}
+
+#ksChart {
+  width: 100%;
+  height: 195px;
+}
+
+/* 中间区域 */
+.sectionCenter {
+  display: flex;
+  width: 1500px;
+  height: 100%;
+  background-color: yellow;
+}
+.center-wrapperL {
+  width: 701.63px;
+  height: 100%;
+}
+.center-wrapperR {
+  width: 714px;
+  height: 100%;
+}
+#sexAgeChart {
+  width: 710.63px;
+  height: 323px;
+}
+#zbbcChart {
+  width: 703.71px;
+  height: 311px;
+}
+#xyccChart {
+  width: 701.33px;
+  height: 473.25px;
+}
+#jrkbChart {
+  width: 701.03px;
+  height: 457.64px;
+}
+#kylxChart {
+  width: 714px;
+  height: 653.22px;
+}
+#kyndChart {
+  width: 716.63px;
+  height: 473px;
+}
+#kyktChart {
+  width: 716.63px;
+  height: 455px;
+}
+
+
+/* 右边区域 */
+.sectionRight {
+  display: flex;
+  width: 1500px;
+  height: 100%;
+  background-color: green;
+}
+
+.right-wrapperL {
+  display: flex;
+  flex-direction: column;
+  width: 716.63px;
+  height: 100%;
+}
+
+.right-wrapperR {
+  display: flex;
+  flex-direction: column;
+  width: 890px;
+  height: 100%;
+}
+
+/* 最右边区域左半部分列 */
+#pthyChart {
+  width: 716.63px;
+  height: 336px;
+}
+
+#ggtzChart {
+  width: 716.63px;
+  height: 436px;
+}
+
+#rsgzChart {
+  width: 718.71px;
+  height: 345px;
+}
+
+#mjcrChart {
+  width: 718.71px;
+  height: 453px;
+}
+
+/* 最右边部分右半部分列 */
+#splzChart {
+  width: 890px;
+  height: 335px;
+}
+
+#zgcqzgChart {
+  width: 885px;
+  height: 437px;
+}
+
+#zgcqwqChart {
+  width: 885px;
+  height: 437px;
+}
+
+#sdqkChart {
+  width: 883px;
+  height: 362px;
+}
