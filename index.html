@@ -23,7 +23,13 @@
         <div class="left-wrapperUp">
           <div class="left-container">
             <!-- 年度排班 -->
-            <div class="block" id="ndpbChart"></div>
+            <div id="ndpbChartContainer">
+              <div class="block" id="ndpbChart"></div>
+              <div class="chartTitle">
+                <div class="title-icon"></div>
+                <span class="title-content">年度排班情况</span>
+              </div>
+            </div>
             <div class="circleChart-container">
               <div class="sub-container">
                 <div class="circleChartContainer">
@@ -133,28 +139,88 @@
           </div>
           <div class="right-container">
             <!-- 学员信息 -->
-            <div class="block small-block" id="xyxxChart"></div>
+            <div class="block small-block" id="xyxxChartContainer">
+              <div class="small-subBlock" id="dqbcChart">
+                <!-- <image src="./img/bg.png"></image> -->
+                <span class="xyxxChartnum">10</span>
+                <span class="xyxxChartname">当前班次</span>
+              </div>
+              <div class="small-subBlock" id="zdxyChart">
+                <span class="xyxxChartnum">4</span>
+                <span class="xyxxChartname">在读学员</span>
+              </div>
+              <div class="small-subBlock" id="ljkfChart">
+                <span class="xyxxChartnum">10</span>
+                <span class="xyxxChartname">累计开放</span>
+              </div>
+              <div class="small-subBlock" id="ljxyChart">
+                <span class="xyxxChartnum">10</span>
+                <span class="xyxxChartname">累计学员</span>
+              </div>
+            </div>
             <!-- 学员占比 -->
-            <div class="block big-block" id="xyzbChart"></div>
+            <div class="big-block" id="xyzbChartContainer">
+              <div class="block" id="xyzbChart"></div>
+              <div class="chartTitle">
+                <div class="title-icon"></div>
+                <span class="title-content">学员占比: 班次</span>
+              </div>
+            </div>
             <!-- 教育信息 -->
-            <div class="block small-block" id="jyxxChart"></div>
+            <div class="block small-block" id="jyxxChartContainer">
+              <div class="small-subBlock" id="jw1cChart">
+                <!-- <image src="./img/bg.png"></image> -->
+                <span class="xyxxChartnum">19%</span>
+                <span class="xyxxChartname">教务一处</span>
+              </div>
+              <div class="small-subBlock" id="jw2cChart">
+                <span class="xyxxChartnum">12%</span>
+                <span class="xyxxChartname">教务二处</span>
+              </div>
+              <div class="small-subBlock" id="jw3cChart">
+                <span class="xyxxChartnum">58%</span>
+                <span class="xyxxChartname">教务三处</span>
+              </div>
+              <div class="small-subBlock" id="pxzxChart">
+                <span class="xyxxChartnum">12%</span>
+                <span class="xyxxChartname">培训中心</span>
+              </div>
+            </div>
             <!-- 开班计划 -->
-            <div class="block big-block" id="kbjhChart"></div>
+            <div class="big-block" id="kbjhChartContainer">
+              <div class="block" id="kbjhChart"></div>
+              <div class="chartTitle">
+                <div class="title-icon"></div>
+                <span class="title-content">开班计划</span>
+              </div>
+            </div>
           </div>
         </div>
         <div class="left-wrapperDown">
           <div class="left-subContainer1">
             <!-- 课程库资源分布 -->
-            <div class="block" id="kczyChart"></div>
+            <div id="kczyChartContainer">
+              <div class="block" id="kczyChart"></div>
+              <div class="chartTitle">
+                <div class="title-icon"></div>
+                <span class="title-content">课程库资源分布</span>
+              </div>
+            </div>
           </div>
           <div class="left-subContainer2">
             <!-- 评课率/优秀率 -->
-            <div class="block" id="pklChart"></div>
-            <div class="sub-container">
+            <div id="pklChartContainer">
+              <div class="block" id="pklChart"></div>
+              <div class="chartTitle">
+                <div class="title-icon"></div>
+                <span class="title-content">评课率/优秀率</span>
+              </div>
+            </div>
+            <div class="block sub-container" id="ksChartContainer">
               <!-- 课时、课程、师资-->
-              <div class="block" id="ksChart"></div>
-              <div class="block" id="kcChart"></div>
-              <div class="block" id="szChart"></div>
+              <div id="ksChart"></div>
+              <div id="kcChart"></div>
+              <div id="szChart"></div>
             </div>
           </div>
         </div>
@@ -162,7 +228,10 @@
       <div class="sectionCenter">
         <div class="center-wrapperL">
           <!-- 性别年龄 -->
-          <div class="block" id="sexAgeChart"></div>
+          <div class="block sub-container" id="sexAgeChartContainer">
+            <div id="sexChart"></div>
+            <div id="ageChart"></div>
+          </div>
           <!--  在办班次 -->
           <div class="block" id="zbbcChart"></div>
           <!-- 学员出勤（在校） -->
