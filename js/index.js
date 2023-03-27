@@ -25,6 +25,12 @@ $(function () {
   // 饼图
   init_sexChart();
   init_ageChart();
+
+  // 实时数据上下滚动
+  init_zbbcChart();
+
+  // 进度条
+  init_xyccChart();
 });
 
 // 年度排班
@@ -2252,6 +2258,7 @@ function init_sexChart() {
       y: "center",
       textStyle: {
         color: "#fff",
+        fontSize: 22,
       },
     },
     // 悬浮饼图显示的提示框
@@ -2289,6 +2296,7 @@ function init_sexChart() {
       itemHeight: 14,
       textStyle: {
         color: "#fff",
+        fontSize: 18,
       },
       data: legendData,
     },
@@ -2445,13 +2453,15 @@ function init_ageChart() {
     //   ],
     //   globalCoord: false, // 缺省为 false
     // },
-    backgroundColor: "#035083",
+    // backgroundColor: "#035083",
+    backgroundColor: "rgba(0,0,0,0)",
     title: {
       text: "年龄",
       x: "center",
       y: "center",
       textStyle: {
         color: "#fff",
+        fontSize: 22, // 饼图中间的文字大小
       },
     },
     // 悬浮饼图显示的提示框
@@ -2490,6 +2500,7 @@ function init_ageChart() {
         itemHeight: 14,
         textStyle: {
           color: "#fff",
+          fontSize: 18,
         },
         data: legendData[0],
       },
@@ -2505,6 +2516,7 @@ function init_ageChart() {
         itemHeight: 14,
         textStyle: {
           color: "#fff",
+          fontSize: 18,
         },
         data: legendData[1],
       },
@@ -2614,6 +2626,157 @@ function init_ageChart() {
   ageChart.setOption(option, true);
 }
 
+// 在办班次 数据上下滚动
+function init_zbbcChart() {
+  // // 基于准备好的dom，初始化echarts实例
+  // const ul = document.getElementById("ul");
+  // const start = document.getElementById("start");
+  // const reset = document.getElementById("reset");
+  // let timerId;
 
+  // start.onclick = () => {
+  //   if (timerId) return;
+  //   timerId = setInterval(() => {
+  //     const firstLi = document.querySelector("#ul li:first-child");
+  //     ul.style.transition = "all 0.5s ease-out";
+  //     firstLi.style.opacity = 0;
+  //     ul.style.top = -110 + "px";
+  //     setTimeout(() => {
+  //       firstLi.removeAttribute("style");
+  //       // 模拟随机添加数据
+  //       // const count = Math.random() * 10
+  //       // for(let i = count; i >0; i--) {
+  //       //     ul.appendChild(firstLi.cloneNode(true))
+  //       // }
+  //       ul.appendChild(firstLi);
+  //       ul.style.transition = "";
+  //       ul.style.top = 0;
+  //     }, 500);
+  //   }, 2000);
+  // };
 
+  // reset.onclick = () => {
+  //   clearInterval(timerId);
+  //   timerId = undefined;
+  //   location.reload();
+  // };
+}
 
+// 学员出勤 进度条图
+function init_xyccChart() {
+  // 基于准备好的dom，初始化echarts实例
+  let xyccChart = echarts.init(document.getElementById("xyccChart"));
+  let option = {
+    // 直角坐标系内绘图网格
+    grid: {
+      show: "true",
+      borderWidth: "0",
+      height: "80%",
+      width: "80%",
+      left: "10%",
+      top: "20%",
+      containLabel: true, // grid 区域是否包含坐标轴的刻度标签
+    },
+    tooltip: {
+      trigger: "axis",
+      axisPointer: {
+        type: "shadow",
+      },
+      formatter: "{b0}: {c0}",
+      /*formatter: function(params) {
+            var result = '';
+            params.forEach(function (item) {
+                result += item.marker + " " + item.seriesName + " : " + item.value +"</br>";
+            });
+            return result;
+        }*/
+    },
+    // backgroundColor: "#121B2C", //背景色
+    backgroundColor: "transparent", //背景色
+    xAxis: {
+      show: false, //是否显示x轴
+      type: "value",
+    },
+    yAxis: {
+      type: "category",
+      inverse: true, //让y轴数据逆向
+      axisLabel: {
+        show: false,
+        textStyle: {
+          color: "#666", //y轴字体颜色
+        },
+        padding: [0, 0, 0, 0], // 内边距
+        formatter: function (value, index) {
+          return ["{title|" + value + "} "].join("\n");
+        },
+        //定义富文本标签
+        // `{styleName|text content text content}` 标记样式名。
+        // 注意，换行仍是使用 '\n'。
+        rich: {
+          title: {
+            color: "#CEF5FF",
+            fontWeight: "400",
+            // borderWidth: 1,
+            // borderColor: '#08c'
+            // textareaBorderColor: '#08c',
+          },
+        },
+      },
+      splitLine: { show: false }, //横向的线
+      axisTick: { show: false }, //y轴的端点
+      axisLine: { show: false }, //y轴的线
+      data: ["课程数量", "线上课程数量", "线下课程数量"],
+    },
+    series: [
+      {
+        name: "数据内框",
+        type: "bar",
+        itemStyle: {
+          normal: {
+            barBorderRadius: 30,
+            // 线性渐变, 前4个参数分别是x0,y0,x2,y2, 范围从0到1，相当于在包围盒中的百分比
+            color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [
+              {
+                offset: 0,
+                color: "#1A347B",
+              },
+              {
+                offset: 1,
+                color: "#4BDEF6",
+              },
+            ]),
+          },
+        },
+        // 显示进度条数值
+        label: {
+          normal: {
+            show: true,
+            position: "right",
+            color: "#9FE0FA",
+            fontSize: 27,
+            formatter: "{c}" + "%",
+          },
+        },
+        barWidth: 20,
+        data: [30, 60, 70],
+      },
+      {
+        name: "背景外框",
+        type: "bar",
+        barWidth: 10, // 每块bar的宽度
+        yAxisIndex: 0, // 将边框柱状图与数据柱状图重叠
+        itemStyle: {
+          normal: {
+            barBorderRadius: [0, 30, 30, 0], // 上/右/下/左四个方向的圆角
+            color: "rgba(45,153,255,0.25)", //rgba设置透明度0.14
+          },
+        },
+        barGap: "-100%",
+        z: 0,
+        barWidth: 20,
+        data: [100, 100, 100], // 这里外框默认是100, 也就是百分百
+      },
+    ],
+  };
+  xyccChart.setOption(option, true);
+}

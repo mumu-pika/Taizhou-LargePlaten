@@ -233,15 +233,82 @@
             <div id="ageChart"></div>
           </div>
           <!--  在办班次 -->
-          <div class="block" id="zbbcChart"></div>
+          <div class="block" id="zbbcChart">
+            <ul>
+              <!-- <li><span class="ul-name"></span><span class="ul-content"></span><span class="ul-author"></span></li> -->
+              <li><span>横条1</span></li>
+              <li><span>横条2</span></li>
+              <li><span>横条3</span></li>
+            </ul>
+          </div>
           <!-- 学员出勤（在校） -->
-          <div class="block" id="xyccChart"></div>
+          <div id="xyccChartContainer">
+            <div class="block" id="xyccChart"></div>
+            <div class="chartTitle" id="xyccTitle">
+              <div class="title-icon"></div>
+              <span class="title-content">学员出勤（在校）</span>
+            </div>
+            <div class="chartTitle" id="kcslTitle">
+              <span class="subTitle-content">课程数量</span>
+            </div>
+            <div class="chartTitle" id="xskcslTitle">
+              <span class="subTitle-content">线上课程数量</span>
+            </div>
+            <div class="chartTitle" id="xxkcslTitle">
+              <span class="subTitle-content">线下课程数量</span>
+            </div>
+          </div>
           <!-- 今日课表 -->
           <div class="block" id="jrkbChart"></div>
         </div>
         <div class="center-wrapperR">
-          <!-- 科研立项成果拓扑 -->
-          <div class="block" id="kylxChart"></div>
+          <!-- 科研成果拓扑 -->
+          <div class="block" id="kylxChart">
+            <div class="kylx-innerContainer">
+              <div class="kylx-upContainer">
+                <div class="kylx-years">
+                  <div class="kylx-year">
+                    <div class="kylx-lxqk">
+                      <div class="kylx-block"></div>
+                    </div>
+                    <div class="kylx-zyjb">
+                      <div class="kylx-block"></div>
+                      <div class="kylx-block"></div>
+                    </div>
+                  </div>
+                  <div class="kylx-year">
+                    <div class="kylx-newYear">
+                      <div class="kylx-block"></div>
+                    </div>
+                    <div class="kylx-centerYear">
+                      <div class="kylx-block"></div>
+                      <div class="kylx-block"></div>
+                    </div>
+                    <div class="kylx-oldYear">
+                      <div class="kylx-block"></div>
+                      <div class="kylx-block"></div>
+                    </div>
+                  </div>
+                  <div class="kylx-year">
+                    <div class="kylx-skyb">
+                      <div class="kylx-block"></div>
+                    </div>
+                    <div class="kylx-zzck">
+                      <div class="kylx-block"></div>
+                      <div class="kylx-block"></div>
+                    </div>
+                  </div>
+                </div>
+                <!-- 下面的三块部分 -->
+                <div class="kylx-datas">
+                  <div class="kylx-data"></div>
+                  <div class="kylx-data"></div>
+                  <div class="kylx-data"></div>
+                </div>
+              </div>
+              <div class="kylx-downContainer"></div>
+            </div>
+          </div>
           <!-- 科研年度工作 -->
           <div class="block" id="kyndChart"></div>
           <!-- 科研课题情况研究 -->
@@ -250,8 +317,8 @@
       </div>
       <div class="sectionRight">
         <div class="right-wrapperL">
-          <!-- 平台活跃 -->
-          <div class="block" id="pthyChart"></div>
+          <!-- 平台活跃 -->立项
+          <div class="block" id="pthyChartContainer"></div>
           <!-- 公告通知 -->
           <div class="block" id="ggtzChart"></div>
           <!-- 人事关注动态 -->

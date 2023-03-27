@@ -336,15 +336,22 @@
 /* 中间区域 */
 .sectionCenter {
   display: flex;
+  justify-content: space-around;
   width: 1500px;
   height: 100%;
   background-color: yellow;
 }
 .center-wrapperL {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 701.63px;
   height: 100%;
 }
 .center-wrapperR {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 714px;
   height: 100%;
 }
@@ -368,18 +375,126 @@
   width: 703.71px;
   height: 311px;
 }
+
+#xyccChartContainer {
+  position: relative;
+}
+
+#xyccTitle {
+  left: 9%;
+  top: 5%;
+}
+
+
+#kcslTitle {
+  left: 9%;
+  top: 18%;
+}
+
+#xskcslTitle {
+  left: 9%;
+  top: 44%;
+}
+
+#xxkcslTitle {
+  left: 9%;
+  top: 68%;
+}
+
+/* 标题内容 */
+.subTitle-content {
+  display: inline-block;
+  height: 100%;
+  text-align: center;
+  /* 行高需要设置为这个元素所在的高度一致, 才能让字体垂直居中 */
+  line-height: 40px;
+  /* 为了解决 span和div的对齐问题*/
+  vertical-align: top;
+  font-family: PingFangSC-Regular;
+  font-size: 20px;
+  color: #cef5ff;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+
 #xyccChart {
   width: 701.33px;
   height: 473.25px;
 }
+
+/* 使用伪元素来创建标题 */
+/* #xyccChart::before {
+  content: "学员出勤(在校)";
+  position: absolute;
+  display: inline-block;
+  width: 300px;
+  height: 40px;
+  font-size: 26px;
+  font-weight: 600;
+  color: #ffffff;
+} */
+
 #jrkbChart {
   width: 701.03px;
   height: 457.64px;
 }
+/* 科研立项可以使用 */
 #kylxChart {
   width: 714px;
   height: 653.22px;
 }
+
+.kylx-innerContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 80%;
+  height: 80%;
+
+}
+
+.kylx-upContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.kylx-years {
+  display: flex;
+}
+
+.kylx-year {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* .kylx-year:nth-child(*){
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+} */
+
+.kylx-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 83.82px;
+  height: 83.82px;
+  border-radius: 27px;
+  background: rgba(193,64,64,0.29);
+  border: 1px solid rgba(255,114,114,1);
+}
+
+/* 底部那个水平垂直居中的学术成果 */
+.kylx-downContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 #kyndChart {
   width: 716.63px;
   height: 473px;
