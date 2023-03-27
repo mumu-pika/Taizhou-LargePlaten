@@ -27,7 +27,7 @@ $(function () {
   init_ageChart();
 
   // 实时数据上下滚动
-  init_zbbcChart();
+  cursor();
 
   // 进度条
   init_xyccChart();
@@ -2626,13 +2626,38 @@ function init_ageChart() {
   ageChart.setOption(option, true);
 }
 
-// 在办班次 数据上下滚动
-function init_zbbcChart() {
-  // // 基于准备好的dom，初始化echarts实例
-  // const ul = document.getElementById("ul");
-  // const start = document.getElementById("start");
-  // const reset = document.getElementById("reset");
-  // let timerId;
+// 在办班次 数据上下滚动 (轮播)
+function cursor() {
+  const ul = document.getElementById("zbbcChart");
+
+  // 这个时候页面上会有开始和重置按钮
+  // const startBtn = document.getElementById("start");
+  // const resetBtn = document.getElementById("reset");
+  let timerId; // 设置定时器
+
+  // start事件 开始滚动
+  function start() {
+    if (timerId) return;
+    timerId = setInterval(() => {
+      const firstLi = document.querySelector("#zbbcChart li:first-child");
+      ul.style.transition = "all 0.5s ease-out";
+      firstLi.style.opacity = 0;
+      ul.style.top = -110 + "px";
+      setTimeout(() => {
+        firstLi.removeAttribute("style");
+        // 模拟随机添加数据
+        // const count = Math.random() * 10
+        // for(let i = count; i >0; i--) {
+        //     ul.appendChild(firstLi.cloneNode(true))
+        // }
+        ul.appendChild(firstLi);
+        ul.style.transition = "";
+        ul.style.top = 0;
+      }, 500);
+    }, 2000);
+  }
+
+  start()
 
   // start.onclick = () => {
   //   if (timerId) return;
