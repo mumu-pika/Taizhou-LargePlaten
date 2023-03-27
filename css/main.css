@@ -16,9 +16,11 @@
   width: 1500px;
   height: 100%;
   /* background-color: #011428; */
-  background-color: #011529;
+  background-color: #01152b;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  align-content: space-between;
 }
 
 /* 对于每个section再分别进行划分 */
@@ -26,17 +28,15 @@
 .left-wrapperUp {
   display: flex;
   width: 100%;
-  height: 983.7px;
+  height: 1010px;
   justify-content: space-between;
 }
 .left-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-content: space-between;
   width: 857.04px;
   height: 100%;
-  background-color: #01152b;
 }
 
 /* 每一个单独的小块 */
@@ -46,6 +46,52 @@
   box-shadow: inset 0px 0px 18px 3px rgba(12, 152, 241, 0.23);
   border-radius: 10px;
 }
+
+/* 折线图的标题 */
+.chartTitle {
+  position: absolute;
+  width: 300px;
+  height: 40px;
+  top: 0;
+  left: 0;
+  padding: 10px;
+  font-family: PingFangSC-Semibold;
+  font-size: 26px;
+  color: #ffffff;
+  letter-spacing: 0;
+  font-weight: 600;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+/* 折线图标题的图标 */
+.title-icon {
+  display: inline-block;
+  width: 8px;
+  height: 40px;
+  background: #1c82ff;
+  border-radius: 2.5px;
+  margin-right: 10px;
+}
+/* 标题内容 */
+.title-content {
+  display: inline-block;
+  height: 100%;
+  text-align: center;
+  /* 行高需要设置为这个元素所在的高度一致, 才能让字体垂直居中 */
+  line-height: 40px;
+  /* 为了解决 span和div的对齐问题*/
+  vertical-align: top;
+  font-family: PingFangSC-Semibold;
+  font-size: 26px;
+  color: #ffffff;
+  letter-spacing: 0;
+  font-weight: 600;
+}
+
+#ndpbChartContainer {
+  position: relative;
+}
+
 #ndpbChart {
   width: 857.04px;
   height: 462.84px;
@@ -55,9 +101,9 @@
 .circleChart-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
   width: 857.04px;
-  height: 515.08px;
+  height: 535.08px;
 }
 
 /* 饼图上的标题 */
@@ -112,6 +158,7 @@
 .sub-container {
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
   width: 100%;
   height: 50%;
 }
@@ -152,9 +199,10 @@
 .right-container {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  align-content: space-between;
   width: 604.03px;
   height: 100%;
-  background-color: #eee;
 }
 
 /* 这里因为4个卡片两大两小，所以这里进行了单独的区分 */
@@ -164,41 +212,114 @@
 }
 
 .big-block {
+  position: relative;
   width: 604.03px;
   height: 321.39px;
+}
+
+.small-subBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  background: url("../img/bg.png") center center no-repeat;
+  background-size: auto;
+}
+
+.xyxxChartnum {
+  margin-bottom: 8px;
+  font-family: SourceHanSansCN-Bold;
+  font-size: 30px;
+  color: #95e490;
+  letter-spacing: 0;
+  text-align: center;
+  font-weight: 700;
+}
+
+.xyxxChartname {
+  font-family: SourceHanSansCN-Normal;
+  font-size: 18px;
+  color: #ffffff;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+
+/* .small-subBlock image{
+  width: 100%;
+  height: 100%;
+} */
+
+#xyxxChartContainer {
+  display: flex;
+}
+
+#jyxxChartContainer {
+  display: flex;
+}
+
+#xyzbChart {
+  width: 100%;
+  height: 100%;
 }
 
 /* sectionLeft的底部部分 */
 .left-wrapperDown {
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
   width: 100%;
-  height: 615.74px;
+  height: 635.74px;
 }
 /* 两个子容器 */
 .left-subContainer1 {
   width: 607.42px;
-  height: 100%;
+  height: 625.74px;
 }
 
 .left-subContainer2 {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   width: 857.04px;
+  height: 625.74px;
+}
+
+/* 底部的左边图 */
+#kczyChartContainer {
+  position: relative;
+  width: 100%;
   height: 100%;
 }
-/* 底部的左边图 */
+
 #kczyChart {
   width: 100%;
   height: 100%;
 }
+
+#kbjhChart {
+  width: 100%;
+  height: 100%;
+}
+
 /* 底部的右边上下两张图 */
+#pklChartContainer {
+  position: relative;
+  height: 388px;
+}
+
 #pklChart {
   width: 100%;
   height: 408px;
 }
 
 /* 仪表盘的表 */
+#ksChartContainer {
+  position: relative;
+  height: 195px;
+}
+
 #ksChart {
   width: 100%;
   height: 195px;
@@ -215,38 +336,165 @@
 /* 中间区域 */
 .sectionCenter {
   display: flex;
+  justify-content: space-around;
   width: 1500px;
   height: 100%;
   background-color: yellow;
 }
 .center-wrapperL {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 701.63px;
   height: 100%;
 }
 .center-wrapperR {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 714px;
   height: 100%;
 }
-#sexAgeChart {
+#sexAgeChartContainer {
+  display: flex;
   width: 710.63px;
   height: 323px;
 }
+
+#sexChart {
+  width: 50%;
+  height: 100%;
+}
+
+#ageChart {
+  width: 50%;
+  height: 100%;
+}
+
 #zbbcChart {
   width: 703.71px;
   height: 311px;
 }
+
+#xyccChartContainer {
+  position: relative;
+}
+
+#xyccTitle {
+  left: 9%;
+  top: 5%;
+}
+
+
+#kcslTitle {
+  left: 9%;
+  top: 18%;
+}
+
+#xskcslTitle {
+  left: 9%;
+  top: 44%;
+}
+
+#xxkcslTitle {
+  left: 9%;
+  top: 68%;
+}
+
+/* 标题内容 */
+.subTitle-content {
+  display: inline-block;
+  height: 100%;
+  text-align: center;
+  /* 行高需要设置为这个元素所在的高度一致, 才能让字体垂直居中 */
+  line-height: 40px;
+  /* 为了解决 span和div的对齐问题*/
+  vertical-align: top;
+  font-family: PingFangSC-Regular;
+  font-size: 20px;
+  color: #cef5ff;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+
 #xyccChart {
   width: 701.33px;
   height: 473.25px;
 }
+
+/* 使用伪元素来创建标题 */
+/* #xyccChart::before {
+  content: "学员出勤(在校)";
+  position: absolute;
+  display: inline-block;
+  width: 300px;
+  height: 40px;
+  font-size: 26px;
+  font-weight: 600;
+  color: #ffffff;
+} */
+
 #jrkbChart {
   width: 701.03px;
   height: 457.64px;
 }
+/* 科研立项可以使用 */
 #kylxChart {
   width: 714px;
   height: 653.22px;
 }
+
+.kylx-innerContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 80%;
+  height: 80%;
+
+}
+
+.kylx-upContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.kylx-years {
+  display: flex;
+}
+
+.kylx-year {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* .kylx-year:nth-child(*){
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+} */
+
+.kylx-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 83.82px;
+  height: 83.82px;
+  border-radius: 27px;
+  background: rgba(193,64,64,0.29);
+  border: 1px solid rgba(255,114,114,1);
+}
+
+/* 底部那个水平垂直居中的学术成果 */
+.kylx-downContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 #kyndChart {
   width: 716.63px;
   height: 473px;
@@ -319,3 +567,13 @@
   width: 883px;
   height: 362px;
 }
+/* .circleChartContainer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.circleChartContainer .left,.circleChartContainer .right{
+  width: 49%;
+  background: #1c82ff;
+} */
